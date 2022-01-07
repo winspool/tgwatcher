@@ -1,7 +1,21 @@
 # tgwatcher 
 
-A telegram bot to remotely check, what a system at home is doing.
+The Game Watcher
+
+Check remotely, what a system at home is doing.
+Example usage is an Android emulator running a game.
+
 This needs far less bandwidth compared to a full blown remote control software
 
-Other backends should follow (DeltaChat as example)
+
+# Backends
+
+* Telegram bot
+* EMails (DeltaChat)
+
+# Systems
+
+* Linux (X11)
+* windows
+* Android
 
