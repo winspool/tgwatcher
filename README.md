@@ -9,6 +9,7 @@ This needs far less bandwidth compared to a full blown remote control software
 
 
 # Build with autotools
+* autoreconf
 * configure
 * make
 * sudo make install
