@@ -41,14 +41,14 @@ extern "C" {
 #include <stdint.h>
 #include <inttypes.h>
 #include <stdlib.h>
-
-// #include <string.h>
+#include <string.h>
 
 void  TGW_MEMTRACK_INIT(void);
 void  TGW_MEMTRACK_DUMP(void);
 void  TGW_MEMTRACK_DESTROY(int32_t still_in_use);
 
 void *TGW_ALLOC(size_t size);
+void *TGW_ALLOC_ZERO(size_t size);
 void  TGW_FREE(void *memory);
 void *TGW_REALLOC(void *memory, size_t size);
 
@@ -77,6 +77,16 @@ void TGW_MEMTRACK_DESTROY(int32_t still_in_use)
 void *TGW_ALLOC(size_t size)
 {
     return malloc(size);
+}
+#endif
+
+#ifndef TGW_ALLOC_ZERO
+void *TGW_ALLOC_ZERO(size_t size)
+{
+    void * ptr = TGW_ALLOC(size);
+
+    memset(ptr, 0, size);
+    return ptr;
 }
 #endif
 
@@ -156,7 +166,19 @@ void *TGW_ALLOC(size_t size)
 }
 #endif
 
+#ifndef TGW_ALLOC_ZERO
+void *TGW_ALLOC_ZERO(size_t size)
+{
+    void * ptr;
+#ifdef DEBUG_MEMORY
+    printf("# %s(%zu)\n", __FUNCTION__, size);
+#endif
 
+    ptr = TGW_ALLOC(size);
+    memset(ptr, 0, size);
+    return ptr;
+}
+#endif
 
 #ifndef TGW_FREE
 void TGW_FREE(void *memory)
