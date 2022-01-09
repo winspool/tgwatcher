@@ -8,14 +8,20 @@ Example usage is an Android emulator running a game.
 This needs far less bandwidth compared to a full blown remote control software
 
 
-# Backends
+# Build with autotools
+* configure
+* make
+* sudo make install
+
+
+# Backends (ToDo)
 
 * Telegram bot
 * EMails (DeltaChat)
 
-# Systems
+
+# Systems (ToDo)
 
 * Linux (X11)
 * windows
-* Android
 

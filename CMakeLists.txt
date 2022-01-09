@@ -14,8 +14,3 @@ set( DESCRIPTION "The Game Watcher: Checking remote system (game) ui status" )
 add_executable(tgwatcher src/tgwatcher.c )
 
 
-
-
-
-
-

@@ -18,24 +18,27 @@ extern "C" {
 
 /* ############################## */
 
+#define TGW_IMPLEMENTATION
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdint.h>
+
+#include "tgw_memory.h"
 
 
 /* ############################## */
 
 int main(int argc, char **argv)
 {
-	printf("%s started\n", __FUNCTION__);
 
+    TGW_MEMTRACK_INIT();
 
-	puts("Hello World\n");
+    puts("Hello World\n");
 
-
-
-	printf("end of %s\n", __FUNCTION__);
-	return 0;
+    TGW_MEMTRACK_DESTROY(0);
+    printf("end of %s\n", __FUNCTION__);
+    return 0;
 }
 
 /* ############################## */
