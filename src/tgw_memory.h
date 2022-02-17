@@ -52,6 +52,8 @@ void *TGW_ALLOC_ZERO(size_t size);
 void  TGW_FREE(void *memory);
 void *TGW_REALLOC(void *memory, size_t size);
 
+char * xstrdup(char * oldstring);
+
 #ifdef TGW_IMPLEMENTATION
 
 /* ############################### */
@@ -214,6 +216,28 @@ void *TGW_REALLOC(void *old_memory, size_t size)
 /* close  #ifdef __OPTIMIZE_SIZE__ */
 #endif
 
+/* ############################### */
+/*
+ * copy a string, alloc the needed buffer
+ */
+char * xstrdup(char * oldstring)
+{
+    char * res;
+    size_t len = strlen(oldstring);
+
+    res = TGW_ALLOC(len+1);
+    if (res)
+    {
+        if (oldstring)
+        {
+            memcpy(res, oldstring, len);
+        }
+        res[len] = 0;
+    }
+    return res;
+}
+
+/* ############################### */
 /* close #ifdef TGW_IMPLEMENTATION */
 #endif
 
